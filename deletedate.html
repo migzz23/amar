@@ -1,0 +1,17 @@
+<?php
+
+include ("connection.php");
+
+$yesterday = date('Y-m-d', strtotime('-1 day'));
+
+$query = "DELETE FROM reservation_tbl WHERE app_date = '$yesterday'";
+$result = $conn->query($query);
+
+if (!$result) {
+    echo "Error deleting data: " . $conn->error;
+} else {
+    echo "Data deleted successfully!";
+}
+
+$conn->close();
+?>
